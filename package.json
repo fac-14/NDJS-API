@@ -4,7 +4,7 @@
   "description": "API project (week 3) for N, D, J &amp; S",
   "main": "data.js",
   "scripts": {
-    "test": "node test.js | tap-spec" 
+    "test": "node test.js | tap-spec"
   },
   "repository": {
     "type": "git",
