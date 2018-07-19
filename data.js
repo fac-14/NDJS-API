@@ -26,7 +26,7 @@ var github_api_key = "4a06f2f722630ee8f37cafaa2caec3ec98fc6b91"; // "old" one ge
 // Functions to make the above URLs
 function createGiphyURL (searchTerm){
     var searchTermSanitised = searchTerm.replace(/[^A-Za-z0-9 ]/g,"").replace(" ","+").trim(); //WOOO
-    giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTermSanitised + "&api_key=" + giphy_api_key;
+    giphyURL = "https://api.giphy.com/v1/gifs/random?tag=" + searchTermSanitised + "&api_key=" + giphy_api_key;
     return giphyURL;
 }
 

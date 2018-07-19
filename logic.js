@@ -749,6 +749,51 @@ var example =
     default_branch: "master"
     }
   ]
+sampleGiphy = {
+      data: {
+      type: "gif",
+      id: "ulKtDV83bDAz5kcXAW",
+      slug: "laurentianu-cute-dog-ulKtDV83bDAz5kcXAW",
+      url: "https://giphy.com/gifs/laurentianu-cute-dog-ulKtDV83bDAz5kcXAW",
+      bitly_gif_url: "https://gph.is/2q9EWed",
+      bitly_url: "https://gph.is/2q9EWed",
+      embed_url: "https://giphy.com/embed/ulKtDV83bDAz5kcXAW",
+      username: "laurentianu",
+      source: "",
+      content_url: "",
+      source_tld: "",
+      source_post_url: "",
+      is_sticker: 0,
+      import_datetime: "2018-04-06 16:57:37",
+      trending_datetime: "2018-07-08 05:30:01",
+      user: {},
+      images: {},
+      title: "dog puppy GIF by Laurentian University",
+      image_original_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/giphy.gif",
+      image_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/giphy.gif",
+      image_mp4_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/giphy.mp4",
+      image_frames: "45",
+      image_width: "270",
+      image_height: "480",
+      fixed_height_downsampled_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/200_d.gif",
+      fixed_height_downsampled_width: "112",
+      fixed_height_downsampled_height: "200",
+      fixed_width_downsampled_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/200w_d.gif",
+      fixed_width_downsampled_width: "200",
+      fixed_width_downsampled_height: "356",
+      fixed_height_small_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/100.gif",
+      fixed_height_small_still_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/100_s.gif",
+      fixed_height_small_width: "56",
+      fixed_height_small_height: "100",
+      fixed_width_small_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/100w.gif",
+      fixed_width_small_still_url: "https://media3.giphy.com/media/ulKtDV83bDAz5kcXAW/100w_s.gif",
+      fixed_width_small_width: "100",
+      fixed_width_small_height: "178",
+      caption: ""
+      },
+      meta: {}
+}
+
 
 var logic = {
   // Jessie & Nat working from here down
@@ -820,6 +865,10 @@ var logic = {
     return output;
   },
 
+  getGifSrc: function (data) {
+    return data.data.embed_url;
+  },
+
   // Dom and Simon working from here down
   compare: function (object1, object2) {
     var randIndex = Math.floor(Math.random() * 5);
@@ -865,7 +914,8 @@ var logic = {
 
 }
 
-console.log(logic.getAllStats(example));
+// console.log(logic.getGifSrc(sampleGiphy));
+// console.log(logic.getAllStats(example));
 
 // e.g
 // userStats = {
