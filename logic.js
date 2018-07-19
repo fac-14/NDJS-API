@@ -804,6 +804,10 @@ var logic = {
     }
   },
 
+  getName: function(example) {
+    return example[0].owner.login;
+  },
+
   getAllStats: function (data) {
     var output = {};
     output["Longest repo name"] = this.longestRepoName(data);
@@ -811,6 +815,8 @@ var logic = {
     output["Total open issues"] = this.openIssues(data);
     output["Total languages"] = this.totalLanguages(data);
     output["Employability Factor"] = this.emplFactor(data);
+    output["name"] = this.getName(data);
+
     return output;
   }
 
