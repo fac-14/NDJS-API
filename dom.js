@@ -2,13 +2,10 @@
 // 1. Dom.js requests API/XHR (Giphy, GitHub) which will be the output of data.js as an object
 // 2. Logic.js will process the data.js object and return our filtered object containing stats, images...
 // 3. Dom.js will use the processed object and fills the HTML
-
-// var fetch = require("./data.js");
-// var createGiphyURL = require("./data.js");
-// var createGithubURL = require("./data.js");
-// var retrieveSRC = require("./logic.js");
-// var getStatsAll = require("./logic.js");
-// var findWinner = require("./logic.js");
+if (typeof module !== "undefined")  {
+    var logic = require("./logic.js");
+    var data = require("./data.js");
+}
 
 var form = document.querySelector("#form");
 
@@ -28,20 +25,21 @@ form.addEventListener("submit", function(event) {
   var animalTwo = event.target[3].value;
   //   console.log(usernameOne, usernameTwo, animalOne, animalTwo);
   // make giphy requests
-  var gifUrlOne = fetch(createGiphyURL, animalOne, retrieveSRC);
-  var gifUrlTwo = fetch(createGiphyURL, animalTwo, retrieveSRC);
+  var gifUrlOne = data.fetch(data.createGiphyURL, animalOne,logic.getGifSrc);
+  var gifUrlTwo = data.fetch(data.createGiphyURL, animalTwo, logic.getGifSrc);
   // retrieve stats object
-  var statsObjOne = fetch(createGithubURL, usernameOne, getStatsAll);
-  var statsObjTwo = fetch(createGithubURL, usernameTwo, getStatsAll);
+  var statsObjOne = data.fetch(data.createGithubURL, usernameOne, logic.getAllStats);
+  var statsObjTwo = data.fetch(data.createGithubURL, usernameTwo, logic.getAllStats);
   // render gifs to page
+  
   renderGif(gifUrlOne, gifDiv1);
   renderGif(gifUrlTwo, gifDiv2);
-  // render stats
+//   // render stats
   renderStats(statsObjOne, statDiv1);
   renderStats(statsObjTwo, statDiv2);
-  // find & render winner
-  var winner = findWinner(statsObjOne, statsObjTwo);
-  renderWinner(winner);
+//   // find & render winner
+//   var winner = findWinner(statsObjOne, statsObjTwo);
+//   renderWinner(winner);
 });
 
 function renderGif(url, element) {

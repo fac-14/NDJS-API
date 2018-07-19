@@ -855,17 +855,18 @@ var logic = {
 
   getAllStats: function (data) {
     var output = {};
-    output["Longest repo name"] = this.longestRepoName(data);
-    output["Oldest repo (days)"] = this.oldestRepo(data);
-    output["Total open issues"] = this.openIssues(data);
-    output["Total languages"] = this.totalLanguages(data);
-    output["Employability Factor"] = this.emplFactor(data);
-    output["name"] = this.getName(data);
+    output["Longest repo name"] = logic.longestRepoName(data);
+    output["Oldest repo (days)"] = logic.oldestRepo(data);
+    output["Total open issues"] = logic.openIssues(data);
+    output["Total languages"] = logic.totalLanguages(data);
+    output["Employability Factor"] = logic.emplFactor(data);
+    output["name"] = logic.getName(data);
 
     return output;
   },
 
   getGifSrc: function (data) {
+    console.log(data);
     return data.data.embed_url;
   },
 
@@ -917,13 +918,6 @@ var logic = {
 // console.log(logic.getGifSrc(sampleGiphy));
 // console.log(logic.getAllStats(example));
 
-// e.g
-// userStats = {
-//   longestRepo: 25,
-//   numberOfStars: 6
-// }
-
 if (typeof module !== "undefined")  {
   module.exports = logic;
-  // module.exports = getAllStats;
 }
