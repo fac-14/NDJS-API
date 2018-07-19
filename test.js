@@ -764,6 +764,30 @@ test('Tests for longest repo name', function(t) {
     t.end();
 })
 
+test('Test for oldest repo', function(t) {
+    t.equal(typeof logic.oldestRepo(example), "number", "should return a number")
+    t.equal(logic.oldestRepo(example), 310, "longest repo of example should return 310")
+    t.end();
+})
+
+test('Test for fewest open issues', function(t) {
+    t.equal(typeof logic.openIssues(example), "number", "should return a number")
+    t.equal(logic.openIssues(example), 2, "function should return 2")
+    t.end();
+})
+
+test('test for total number of languages', function(t) {
+    t.equal(typeof logic.totalLanguages(example),"number","should return a number");
+    t.equal(logic.totalLanguages(example),4,"should return 4");
+    t.end();
+})
+
+test('test for employability factor', function(t) {
+    t.equal(typeof logic.emplFactor(example),"number","should return a number");
+    t.equal(logic.emplFactor(example) > 11341,true,"should return a number greater than 11341");
+    t.end();
+})
+
 
 //Write the following tests
 // 1. test if each XHR request is returning an object (logic.js)
