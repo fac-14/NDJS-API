@@ -4,20 +4,13 @@
 }
 
 body {
-<<<<<<< HEAD
     margin: 0;
     padding: 0 0 50px 0;
     background: white;
-||||||| merged common ancestors
-    margin: 0;
-    padding: 0;
-=======
-  margin: 0;
-  padding: 0;
->>>>>>> 643acbcf2166f12d3ea99a65b60aa5806b0570eb
 }
 
 header {
+padding-left: 20px;
   color: white;
   background: rgba(0, 0, 0, 0.9);
   text-align: center;
@@ -44,6 +37,7 @@ header p {
 }
 
 .card {
+margin-top: 10px;
   height: 480px;
   width: calc(480px / 3.5 * 2.5);
   overflow: none;
@@ -113,7 +107,7 @@ button {
   /* display: none; */
 }
 
-ul {
+ul, h2 {
   list-style-type: none;
   padding: 0 15px;
 }
@@ -129,7 +123,6 @@ li {
 } */
 
 @media screen and (min-width: 1050px) {
-<<<<<<< HEAD
     .main-wrapper {
         width: 75%;
         margin: auto;
@@ -141,22 +134,3 @@ li {
         padding-left: 12.5%;
     }
 }
-||||||| merged common ancestors
-    .main-wrapper {
-        width: 75%;
-        margin: auto;
-    }
-    #submit-btn {
-        margin: 0 12.5vw;
-    }
-}
-=======
-  .main-wrapper {
-    width: 75%;
-    margin: auto;
-  }
-  #submit-btn {
-    margin: 0 12.5vw;
-  }
-}
->>>>>>> 643acbcf2166f12d3ea99a65b60aa5806b0570eb
