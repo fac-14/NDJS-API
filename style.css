@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 body {
@@ -118,9 +118,18 @@ li {
   justify-content: space-between;
 }
 
-/* li span {
-;    align: auto
-} */
+#winner-div {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#winner-div h2 {
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 700;
+}
 
 @media screen and (min-width: 1050px) {
     .main-wrapper {
