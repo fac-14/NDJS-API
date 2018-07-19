@@ -752,20 +752,73 @@ var example =
 
 var logic = {
   // Jessie & Nat working from here down
-  longestRepoName: function (example) {
-    return 0;
+  longestRepoName: function (example) { 
+    var biggest = 0;
+    for (var i = 0; i < example.length; i++) {
+      if ( example[i].name.length > biggest ) {
+        biggest = example[i].name.length;
+      }
+    }
+    return biggest;
+  },
+
+  oldestRepo: function(example) {
+    var oldest = 0;
+    var today_ms = new Date();
+
+    for (var i = 0; i < example.length; i++) {
+      var repoDate_ms = new Date(example[i].created_at);
+      var repoAge_days = Math.ceil((today_ms-repoDate_ms)/86400000);
+      if ( repoAge_days > oldest ) {
+        oldest = repoAge_days;
+      }
+    }
+    return oldest;
+  },
+
+  openIssues: function(example) {
+    var total = 0;
+    example.forEach(function(obj){
+      total += obj.open_issues_count;
+    });
+    return total;
+  },
+
+  totalLanguages: function(example) {
+    var languages = [];
+    
+    example.forEach(function(obj){
+      if (obj.language !== null && languages.indexOf(obj.language) === -1 ) {
+        languages.push(obj.language);
+      }
+    })
+    return languages.length;
+  },
+
+  emplFactor: function(example) {
+    var name = example[0].owner.login;
+    if (name == "developess" || name == "njons" || name == "virtualDOMinic" || name == "dupreesi") {
+      return Math.max(Math.floor(Math.random()*100000),11341)
+    } else {
+      return Math.floor(Math.random()*10000)
+    }
   },
 
   getAllStats: function (data) {
     var output = {};
-    output.logestRepo = longestRepoName(data);
+    output["Longest repo name"] = this.longestRepoName(data);
+    output["Oldest repo (days)"] = this.oldestRepo(data);
+    output["Total open issues"] = this.openIssues(data);
+    output["Total languages"] = this.totalLanguages(data);
+    output["Employability Factor"] = this.emplFactor(data);
     return output;
   }
-
 
   // Dom and Simon working from here down
 
 }
+
+console.log(logic.getAllStats(example));
 
 // e.g
 // userStats = {
