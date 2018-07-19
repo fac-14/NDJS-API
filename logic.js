@@ -3,10 +3,10 @@
 // The final function will aggregate & call all the other functions and return an OBJECT with key value pairs for each stat:
 
 var logic = {
-  longestRepoName: function (example) { 
+  longestRepoName: function(example) {
     var biggest = 0;
     for (var i = 0; i < example.length; i++) {
-      if ( example[i].name.length > biggest ) {
+      if (example[i].name.length > biggest) {
         biggest = example[i].name.length;
       }
     }
@@ -19,8 +19,8 @@ var logic = {
 
     for (var i = 0; i < example.length; i++) {
       var repoDate_ms = new Date(example[i].created_at);
-      var repoAge_days = Math.ceil((today_ms-repoDate_ms)/86400000);
-      if ( repoAge_days > oldest ) {
+      var repoAge_days = Math.ceil((today_ms - repoDate_ms) / 86400000);
+      if (repoAge_days > oldest) {
         oldest = repoAge_days;
       }
     }
@@ -29,7 +29,7 @@ var logic = {
 
   openIssues: function(example) {
     var total = 0;
-    example.forEach(function(obj){
+    example.forEach(function(obj) {
       total += obj.open_issues_count;
     });
     return total;
@@ -37,21 +37,26 @@ var logic = {
 
   totalLanguages: function(example) {
     var languages = [];
-    
-    example.forEach(function(obj){
-      if (obj.language !== null && languages.indexOf(obj.language) === -1 ) {
+
+    example.forEach(function(obj) {
+      if (obj.language !== null && languages.indexOf(obj.language) === -1) {
         languages.push(obj.language);
       }
-    })
+    });
     return languages.length;
   },
 
   emplFactor: function(example) {
     var name = example[0].owner.login;
-    if (name == "developess" || name == "njons" || name == "virtualDOMinic" || name == "dupreesi") {
-      return Math.max(Math.floor(Math.random()*100000),11341)
+    if (
+      name == "developess" ||
+      name == "njons" ||
+      name == "virtualDOMinic" ||
+      name == "dupreesi"
+    ) {
+      return Math.max(Math.floor(Math.random() * 100000), 11341);
     } else {
-      return Math.floor(Math.random()*10000)
+      return Math.floor(Math.random() * 10000);
     }
   },
 
@@ -59,7 +64,7 @@ var logic = {
     return example[0].owner.login;
   },
 
-  getAllStats: function (data,callback,dest) {
+  getAllStats: function(data, callback, dest) {
     var output = {};
     output["Longest repo name"] = logic.longestRepoName(data);
     output["Oldest repo (days)"] = logic.oldestRepo(data);
@@ -67,19 +72,19 @@ var logic = {
     output["Total languages"] = logic.totalLanguages(data);
     output["Employability Factor"] = logic.emplFactor(data);
     output["name"] = logic.getName(data);
-    callback(output,dest);
+    callback(output, dest);
   },
 
-  getGifSrc: function (data,callback,dest) {
+  getGifSrc: function(data, callback, dest) {
     console.log(data.data.image_url);
-    callback(data.data.image_url,dest);
+    callback(data.data.image_url, dest);
   },
 
-  compare: function (object1, object2) {
+  compare: function(object1, object2) {
     var randIndex = Math.floor(Math.random() * 5);
     var winnerObj = {
       winner: "",
-      category: "",
+      category: ""
     };
     var objKeysArr = Object.keys(object1);
     var keyName = objKeysArr[randIndex];
@@ -91,37 +96,32 @@ var logic = {
     winnerObj.category = keyName;
 
     // find the winner
-    if (keyName == "Total open issues"){
-      if (object1Val < object2Val){
-        winnerObj.winner = object1.name
-      }
-      else if (object1Val > object2Val){
-        winnerObj.winner = object2.name
-      }
-      else {
-        winnerObj.winner = "nobody"
+    if (keyName == "Total open issues") {
+      if (object1Val < object2Val) {
+        winnerObj.winner = object1.name;
+      } else if (object1Val > object2Val) {
+        winnerObj.winner = object2.name;
+      } else {
+        winnerObj.winner = "nobody";
       }
     } else {
-      if (object1Val > object2Val){
-        winnerObj.winner = object1.name
-      }
-      else if (object1Val < object2Val){
-        winnerObj.winner = object2.name
-      }
-      else {
-        winnerObj.winner = "nobody"
+      if (object1Val > object2Val) {
+        winnerObj.winner = object1.name;
+      } else if (object1Val < object2Val) {
+        winnerObj.winner = object2.name;
+      } else {
+        winnerObj.winner = "nobody";
       }
     }
 
     // return the populated winner object!
     return winnerObj;
-  },
-
-}
+  }
+};
 
 // console.log(logic.getGifSrc(sampleGiphy));
 // console.log(logic.getAllStats(example));
 
-if (typeof module !== "undefined")  {
+if (typeof module !== "undefined") {
   module.exports = logic;
 }
