@@ -6,6 +6,7 @@
     <title>Title here</title>
     <!--     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet"> -->
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -16,6 +17,7 @@
     </header>
     <div class="main-wrapper">
         <form id="form">
+            <div class="form-div">
             <label for="username-1">Add your Github username:</label>
             <input type="text" id="username-1" required autocomplete="off" value="njons">
             <br>
@@ -23,7 +25,8 @@
             <label for="animal-1">If you were an animal you would be a:</label>
             <input type="text" id="animal-1" required autocomplete="off" value="cat">
             <br>
-
+            </div>
+            <div class="form-div">
             <label for="username-2">Add your rival's Github username:</label>
             <input type="text" id="username-2" required autocomplete="off" value="developess">
             <br>
@@ -31,19 +34,20 @@
             <label for="animal-2">If they were an animal they would be a:</label>
             <input type="text" id="animal-2" required autocomplete="off" value="cat">
             <br>
-
-            <button type="submit" id="fight-btn">Fight!</button>
+            </div>
+            <button type="submit" id="submit-btn">Submit</button>
         </form>
+        <div id="fight-div"><button id="fight-btn" class="hidden">Fight!</button></div>
         <div id='winner-div'></div>
         <div id="cards-wrapper">
-            <div id="card1">
+            <div id="card1" class="card">
                 <div id="avatar-output-1">
                 </div>
                 <div id="stats-output-1">
                     <!-- stats HTML will be filled here -->
                 </div>
             </div>
-            <div id="card2">
+            <div id="card2" class="card">
                 <div id="avatar-output-2">
                     <!-- gif 2 will be filled in here -->
                 </div>
