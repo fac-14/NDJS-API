@@ -776,3 +776,37 @@ test('Tests for longest repo name', function(t) {
 // write code here...
 
 //...feel free to add other tests that make sense along the way
+
+
+var obj1 = {
+    longestRepo: 35,
+    oldestRepo: 189,
+    totalIssuesOpen: 2,
+    languages: 3,
+    employabilityFactor: 9,
+    name: "virtualDOMinic",
+}
+    
+var obj2 = {
+    longestRepo: 40,
+    oldestRepo: 100,
+    totalIssuesOpen: 4,
+    languages: 5,
+    employabilityFactor: 5,
+    name: "dupreesi",
+}
+
+var loserObj = {
+    longestRepo: 1,
+    oldestRepo: 1,
+    totalIssuesOpen: 224,
+    languages: 0,
+    employabilityFactor: -1,
+    name: "developess",
+    }
+
+test('Tests compare function', function(t) {
+    t.equal(typeof logic.compare(obj1, obj2),"object","should return an array or object");
+    t.equal(logic.compare(obj1, loserObj).winner,"virtualDOMinic", "loser should never win");
+    t.end();
+});

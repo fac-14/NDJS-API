@@ -760,10 +760,51 @@ var logic = {
     var output = {};
     output.logestRepo = longestRepoName(data);
     return output;
-  }
+  },
 
 
   // Dom and Simon working from here down
+  compare: function (object1, object2) {
+    var randIndex = Math.floor(Math.random() * 5);
+    var winnerObj = {
+      winner: "",
+      category: "",
+    };
+    var objKeysArr = Object.keys(object1);
+    var keyName = objKeysArr[randIndex];
+
+    // get the values of the key from each obj
+    var object1Val = object1[keyName];
+    var object2Val = object2[keyName];
+
+    winnerObj.category = keyName;
+
+    // find the winner
+    if (keyName == "totalIssuesOpen"){
+      if (object1Val < object2Val){
+        winnerObj.winner = object1.name
+      }
+      else if (object1Val > object2Val){
+        winnerObj.winner = object2.name
+      }
+      else {
+        winnerObj.winner = "Nobody wins!"
+      }
+    } else {
+      if (object1Val > object2Val){
+        winnerObj.winner = object1.name
+      }
+      else if (object1Val < object2Val){
+        winnerObj.winner = object2.name
+      }
+      else {
+        winnerObj.winner = "nobody"
+      }
+    }
+
+    // return the populated winner object!
+    return winnerObj;
+  },
 
 }
 
