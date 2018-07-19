@@ -8,5 +8,5 @@ XHR 2
     * get data from github.com/username/repos
     * return parsed object
     * gets stats using functions from logic.js...
-
+    * 
 */

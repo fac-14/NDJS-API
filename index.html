@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Title here</title>
-<!--     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet"> -->
+    <!--     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet"> -->
     <link rel="stylesheet" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
         <h1>Git Battles</h1>
         <p>Pit your github creds against your rival's, to determine the ultimate champion</p>
@@ -15,19 +17,24 @@
     <div class="main-wrapper">
         <form id="form">
             <label for="username-1">Add your Github username:</label>
-            <input type="text" id="username-1" required autocomplete="off"><br>
+            <input type="text" id="username-1" required autocomplete="off">
+            <br>
 
             <label for="animal-1">If you were an animal you would be a:</label>
-            <input type="text" id="animal-1" required autocomplete="off"><br>
-            
+            <input type="text" id="animal-1" required autocomplete="off">
+            <br>
+
             <label for="username-2">Add your rival's Github username:</label>
-            <input type="text" id="username-2" required autocomplete="off"><br>
+            <input type="text" id="username-2" required autocomplete="off">
+            <br>
 
             <label for="animal-2">If they were an animal they would be a:</label>
-            <input type="text" id="animal-2" required autocomplete="off"><br>
+            <input type="text" id="animal-2" required autocomplete="off">
+            <br>
 
             <button type="submit" id="fight-btn">Fight!</button>
         </form>
+        <div id='winner-div'></div>
         <div id="cards-wrapper">
             <div id="card1">
                 <div id="avatar-output-1">
@@ -48,9 +55,10 @@
         </div>
 
     </div>
-    
-  </body>
-  <script type="text/javascript" src = "./logic.js"></script>
-  <script type="text/javascript" src = "./dom.js"></script>
-  <script type="text/javascript" src = "./data.js"></script>
+
+</body>
+<script type="text/javascript" src="./logic.js"></script>
+<script type="text/javascript" src="./dom.js"></script>
+<script type="text/javascript" src="./data.js"></script>
+
 </html>
