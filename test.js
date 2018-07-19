@@ -784,7 +784,7 @@ test('test for total number of languages', function(t) {
 
 test('test for employability factor', function(t) {
     t.equal(typeof logic.emplFactor(example),"number","should return a number");
-    t.equal(logic.emplFactor(example) > 11341,true,"should return a number greater than 11341");
+    t.equal(logic.emplFactor(example) > 11340,true,"should return a number greater than 11340");
     t.end();
 })
 
@@ -800,3 +800,37 @@ test('test for employability factor', function(t) {
 // write code here...
 
 //...feel free to add other tests that make sense along the way
+
+
+var obj1 = {
+    longestRepo: 35,
+    oldestRepo: 189,
+    totalIssuesOpen: 2,
+    languages: 3,
+    employabilityFactor: 9,
+    name: "virtualDOMinic",
+}
+    
+var obj2 = {
+    longestRepo: 40,
+    oldestRepo: 100,
+    "Total open issues": 4,
+    languages: 5,
+    employabilityFactor: 5,
+    name: "dupreesi",
+}
+
+var loserObj = {
+    longestRepo: 1,
+    oldestRepo: 1,
+    "Total open issues": 224,
+    languages: 0,
+    employabilityFactor: -1,
+    name: "developess",
+    }
+
+test('Tests compare function', function(t) {
+    t.equal(typeof logic.compare(obj1, obj2),"object","should return an array or object");
+    t.equal(logic.compare(obj1, loserObj).winner,"virtualDOMinic", "loser should never win");
+    t.end();
+});
