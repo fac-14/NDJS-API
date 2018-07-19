@@ -20,13 +20,13 @@ form.addEventListener("submit", function(event) {
   var animalOne = event.target[1].value;
   var usernameTwo = event.target[2].value;
   var animalTwo = event.target[3].value;
-  //   console.log(usernameOne, usernameTwo, animalOne, animalTwo);
+  // console.log(usernameOne, usernameTwo, animalOne, animalTwo);
   // make giphy requests
-  var gifUrlOne = data.fetch(data.createGiphyURL, animalOne,logic.getGifSrc,renderGif,gifDiv1);
-  var gifUrlTwo = data.fetch(data.createGiphyURL, animalTwo, logic.getGifSrc,renderGif,gifDiv2);
+  var gifUrlOne = data.fetch(data.createGiphyURL, animalOne, logic.getGifSrc, renderGif, gifDiv1);
+  var gifUrlTwo = data.fetch(data.createGiphyURL, animalTwo, logic.getGifSrc, renderGif, gifDiv2);
   // retrieve stats object
-  var statsObjOne = data.fetch(data.createGithubURL, usernameOne, logic.getAllStats,renderStats,statDiv1);
-  var statsObjTwo = data.fetch(data.createGithubURL, usernameTwo, logic.getAllStats,renderStats,statDiv2);
+  var statsObjOne = data.fetch(data.createGithubURL, usernameOne, logic.getAllStats, renderStats, statDiv1);
+  var statsObjTwo = data.fetch(data.createGithubURL, usernameTwo, logic.getAllStats, renderStats, statDiv2);
 });
 
 // find & render winner
@@ -56,8 +56,8 @@ function renderStats(obj, element) {
 }
 
 var testWinner = {
-  winner: 1,
-  stat: "longest-repo"
+  winner: "username",
+  category: "longest-repo"
 };
 
 function renderWinner(obj) {
