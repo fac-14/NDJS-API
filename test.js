@@ -784,7 +784,7 @@ test('test for total number of languages', function(t) {
 
 test('test for employability factor', function(t) {
     t.equal(typeof logic.emplFactor(example),"number","should return a number");
-    t.equal(logic.emplFactor(example) > 11341,true,"should return a number greater than 11341");
+    t.equal(logic.emplFactor(example) > 11340,true,"should return a number greater than 11340");
     t.end();
 })
 
