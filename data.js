@@ -1,3 +1,7 @@
+if (typeof module !== "undefined")  {
+    var logic = require("./logic.js");
+  }
+
 /*
 Compiles urls based on user input from dom.js
 
@@ -17,7 +21,7 @@ var githubURL = "";
 
 // API keys
 var giphy_api_key = "7cWhgewjrS2GSML9Sj3iCQZd24zYFLSh"; // Nathalie's API key! "Don't abuse it" (or try to! Nathalie DARES YOU)
-var github_api_key = "7030c53467665997aca886181fcf200c3e9f80a0"; // Dom's API key!
+var github_api_key = "4a06f2f722630ee8f37cafaa2caec3ec98fc6b91"; // "old" one getting 401: "7030c53467665997aca886181fcf200c3e9f80a0"; // Dom's API key!
 
 // Functions to make the above URLs
 function createGiphyURL (searchTerm){
@@ -51,6 +55,7 @@ function fetch (urlFunc, userInput, callback) {
     console.log(response);
 }
 
-  // Example calling of functions (comment it out!):
-//   fetch(createGithubURL, virtualDOMinic, testCallBack);
+// Example calling of functions (comment it out!):
+    //   fetch(createGithubURL, "virtualDOMinic", testCallBack);
+    // fetch(createGiphyURL, "cats", testCallBack);
 
