@@ -5,7 +5,8 @@
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 0 0 50px 0;
+    background: white;
 }
 
 header {
@@ -17,10 +18,21 @@ header {
     align-items: center;
 }
 
+#octocat {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+}
+
 h1 {
     padding: 20px;
     margin: 0;
     letter-spacing: 0.07rem;
+}
+
+header p {
+    line-height: 38px;
 }
 
 .card {
@@ -116,5 +128,8 @@ li {
     }
     #submit-btn {
         margin: 0 12.5vw;
+    }
+    header {
+        padding-left: 12.5%;
     }
 }
