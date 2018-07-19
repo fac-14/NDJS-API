@@ -790,7 +790,7 @@ var obj1 = {
 var obj2 = {
     longestRepo: 40,
     oldestRepo: 100,
-    totalIssuesOpen: 4,
+    "Total open issues": 4,
     languages: 5,
     employabilityFactor: 5,
     name: "dupreesi",
@@ -799,7 +799,7 @@ var obj2 = {
 var loserObj = {
     longestRepo: 1,
     oldestRepo: 1,
-    totalIssuesOpen: 224,
+    "Total open issues": 224,
     languages: 0,
     employabilityFactor: -1,
     name: "developess",

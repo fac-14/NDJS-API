@@ -780,7 +780,7 @@ var logic = {
     winnerObj.category = keyName;
 
     // find the winner
-    if (keyName == "totalIssuesOpen"){
+    if (keyName == "Total open issues"){
       if (object1Val < object2Val){
         winnerObj.winner = object1.name
       }
@@ -788,7 +788,7 @@ var logic = {
         winnerObj.winner = object2.name
       }
       else {
-        winnerObj.winner = "Nobody wins!"
+        winnerObj.winner = "nobody"
       }
     } else {
       if (object1Val > object2Val){
