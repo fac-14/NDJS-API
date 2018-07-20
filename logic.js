@@ -2,19 +2,14 @@
 // All should return a stat value e.g. numberOfRepos(obj) // > 25
 // The final function will aggregate & call all the other functions and return an OBJECT with key value pairs for each stat:
 
-if (typeof module !== "undefined") {
-  var exports = require("./dom.js");
-}
-
-
 var logic = {
   longestRepoName: function(example) {
     var biggest = 0;
-    for (var i = 0; i < example.length; i++) {
-      if (example[i].name.length > biggest) {
-        biggest = example[i].name.length;
+    example.forEach(function(el) {
+      if (el.name.length > biggest) {
+        biggest = el.name.length;
       }
-    }
+    });
     return biggest;
   },
 
@@ -84,39 +79,38 @@ var logic = {
   },
 
   getGifSrc: function(data, callback, dest) {
-    // console.log(data.data.image_url);
     callback(data.data.image_url, dest);
   },
 
-  compare: function(object1, object2) {
+  findWinner: function(competitor1, competitor2) {
     var randIndex = Math.floor(Math.random() * 5);
     var winnerObj = {
       winner: "",
       category: ""
     };
-    var objKeysArr = Object.keys(object1);
+    var objKeysArr = Object.keys(competitor1);
     var keyName = objKeysArr[randIndex];
 
     // get the values of the key from each obj
-    var object1Val = object1[keyName];
-    var object2Val = object2[keyName];
+    var object1Val = competitor1[keyName];
+    var object2Val = competitor2[keyName];
 
     winnerObj.category = keyName;
 
     // find the winner
     if (keyName == "Total open issues") {
       if (object1Val < object2Val) {
-        winnerObj.winner = object1.name;
+        winnerObj.winner = competitor1.name;
       } else if (object1Val > object2Val) {
-        winnerObj.winner = object2.name;
+        winnerObj.winner = competitor2.name;
       } else {
         winnerObj.winner = "nobody";
       }
     } else {
       if (object1Val > object2Val) {
-        winnerObj.winner = object1.name;
+        winnerObj.winner = competitor1.name;
       } else if (object1Val < object2Val) {
-        winnerObj.winner = object2.name;
+        winnerObj.winner = competitor2.name;
       } else {
         winnerObj.winner = "nobody";
       }
@@ -126,9 +120,6 @@ var logic = {
     return winnerObj;
   }
 };
-
-// console.log(logic.getGifSrc(sampleGiphy));
-// console.log(logic.getAllStats(example));
 
 if (typeof module !== "undefined") {
   module.exports = logic;
