@@ -16,8 +16,8 @@ var winnerDiv = document.querySelector("#winner-div");
 var fightButton = document.querySelector("#fight-btn");
 var submitButton = document.querySelector("#submit-btn");
 
-var statsObjOne_g = null;
-var statsObjTwo_g = null;
+var statsObjectOne_g = null;
+var statsObjectTwo_g = null;
 
 // Extract input variables from form variable and create cards
 form.addEventListener("submit", function(event) {
@@ -30,10 +30,18 @@ form.addEventListener("submit", function(event) {
   //   console.log(usernameOne, usernameTwo, animalOne, animalTwo);
   // make giphy requests
 
-  //hide submit button and make fight button visible
+  // Hide submit button and make fight button visible
   submitButton.classList.add("hidden");
   fightButton.classList.remove("hidden");
+  // Clear divs and stat objects from previous fights
+  var clearArr = [winnerDiv, statDiv1, statDiv2, gifDiv1, gifDiv2];
+  clearArr.forEach(function(el) {
+    el.innerHTML = "";
+  });
+  statsObjectOne_g = null;
+  statsObjectTwo_g = null;
 
+  // make XHRs
   var gifUrlOne = data.fetch(
     data.createGiphyURL,
     animalOne,
