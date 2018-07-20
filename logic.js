@@ -70,6 +70,7 @@ var logic = {
   },
 
   getAllStats: function(data, callback, dest) {
+    console.log("data: ",data)
     var output = {};
     output["Longest repo name"] = logic.longestRepoName(data);
     output["Oldest repo (days)"] = logic.oldestRepo(data);

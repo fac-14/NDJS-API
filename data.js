@@ -2,6 +2,19 @@ if (typeof module !== "undefined") {
   var logic = require("./logic.js");
 }
 
+// Hardcoded JSON response to retun in case of a 404 respose from Github or if real user but no repos
+ var errorObj = [
+  {
+    "name": "",
+    "owner": {
+      "login": "Invalid entry. Try again",
+    },
+    "created_at": "2018-07-20T12:48:02Z",
+    "language": null,
+    "open_issues_count": 9999999,
+  }
+]
+
 // Variables for github name and search created in dom.js. Then will be passed in as arguments to the respective functions in this script
 var giphyURL = "";
 var githubURL = "";
@@ -43,9 +56,15 @@ var data = {
     xhr.addEventListener("load", function() {
       if (xhr.status >= 200 && xhr.status < 300) {
         var response = JSON.parse(xhr.responseText);
-        // console.log("data retrieved")
-        // console.log("type of callback:",typeof callback);
-        // console.log("callback:",callback);
+        // !!BE WARNED!!: hacky solution below:
+        // if user is real, but has no repos - return hardcoded JSON error
+          if (response.length === 0) {
+            response = errorObj;
+          }
+        return callback(response, callback2, destDiv);
+     } else if (xhr.status === 404) {
+        // if user not found on Github - return hardcoded JSON error
+        response = errorObj;
         return callback(response, callback2, destDiv);
       }
     });

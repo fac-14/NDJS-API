@@ -76,7 +76,7 @@ function renderStats(obj, element) {
     // console.log(statsObjectTwo_g)
         statsObjectTwo_g = obj;
         console.log('stats 2:',statsObjectTwo_g)
-    }  
+    }
     // create stats ul of lis
     var output = "<h2>";
     output += obj.name + "</h2><ul>";
@@ -95,7 +95,7 @@ function renderStats(obj, element) {
         fightButton.addEventListener("click", function(e) {
             renderWinner(logic.compare(statsObjectOne_g,statsObjectTwo_g), winnerDiv);
         });
-        
+
     }
 }
 
