@@ -2,6 +2,11 @@
 // All should return a stat value e.g. numberOfRepos(obj) // > 25
 // The final function will aggregate & call all the other functions and return an OBJECT with key value pairs for each stat:
 
+if (typeof module !== "undefined") {
+  var exports = require("./dom.js");
+}
+
+
 var logic = {
   longestRepoName: function(example) {
     var biggest = 0;
@@ -76,7 +81,7 @@ var logic = {
   },
 
   getGifSrc: function(data, callback, dest) {
-    console.log(data.data.image_url);
+    // console.log(data.data.image_url);
     callback(data.data.image_url, dest);
   },
 
