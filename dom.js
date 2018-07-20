@@ -16,7 +16,6 @@ var winnerDiv = document.querySelector("#winner-div");
 var fightButton = document.querySelector("#fight-btn");
 var submitButton = document.querySelector("#submit-btn");
 
-
 var statsObjOne_g = null;
 var statsObjTwo_g = null;
 
@@ -30,6 +29,11 @@ form.addEventListener("submit", function(event) {
   var animalTwo = event.target[3].value;
   //   console.log(usernameOne, usernameTwo, animalOne, animalTwo);
   // make giphy requests
+
+  //hide submit button and make fight button visible
+  submitButton.classList.add("hidden");
+  fightButton.classList.remove("hidden");
+
   var gifUrlOne = data.fetch(
     data.createGiphyURL,
     animalOne,
@@ -62,46 +66,50 @@ form.addEventListener("submit", function(event) {
   );
 });
 
-
 function renderGif(url, element) {
-    var html = "<img src='" + url + "' alt='avatar gif'>";
-    element.innerHTML = html;
+  var html = "<img src='" + url + "' alt='avatar gif'>";
+  element.innerHTML = html;
 }
 
 function renderStats(obj, element) {
-    if (element == statDiv1) {
-        statsObjectOne_g = obj;
-        console.log('stats 1:',statsObjectOne_g)
-    } else {
+  if (element == statDiv1) {
+    statsObjectOne_g = obj;
+    console.log("stats 1:", statsObjectOne_g);
+  } else {
     // console.log(statsObjectTwo_g)
-        statsObjectTwo_g = obj;
-        console.log('stats 2:',statsObjectTwo_g)
-    }  
-    // create stats ul of lis
-    var output = "<h2>";
-    output += obj.name + "</h2><ul>";
-    var keys = Object.keys(obj);
-    for (let i = 0; i < keys.length - 1; i++) {
-        var list = "<li id=";
-        list += keys[i].replace(/\s/g, "_") + ">";
-        list += keys[i] + ": <span>";
-        list += obj[keys[i]] + "</span></li>";
-        output += list;
-    }
-    output += "</ul>";
-    element.innerHTML = output;
-    // once objects stored globally, add event listener to fight button to render winner
-    if (statsObjectOne_g !== null && statsObjectTwo_g !== null) {
-        fightButton.addEventListener("click", function(e) {
-            renderWinner(logic.compare(statsObjectOne_g,statsObjectTwo_g), winnerDiv);
-        });
-        
-    }
+    statsObjectTwo_g = obj;
+    console.log("stats 2:", statsObjectTwo_g);
+  }
+  // create stats ul of lis
+  var output = "<h2>";
+  output += obj.name + "</h2><ul>";
+  var keys = Object.keys(obj);
+  for (let i = 0; i < keys.length - 1; i++) {
+    var list = "<li id=";
+    list += keys[i].replace(/\s/g, "_") + ">";
+    list += keys[i] + ": <span>";
+    list += obj[keys[i]] + "</span></li>";
+    output += list;
+  }
+  output += "</ul>";
+  element.innerHTML = output;
+  // once objects stored globally, add event listener to fight button to render winner
+  if (statsObjectOne_g !== null && statsObjectTwo_g !== null) {
+    fightButton.addEventListener("click", function(e) {
+      // add submit and hide fight button
+      submitButton.classList.remove("hidden");
+      fightButton.classList.add("hidden");
+      renderWinner(
+        logic.compare(statsObjectOne_g, statsObjectTwo_g),
+        winnerDiv
+      );
+    });
+  }
 }
 
 function renderWinner(obj, element) {
-    var output = "<h2>The winner is <strong>";
-    output += obj.winner + "</strong> with: "
-    output += obj.category +"!</h2>";
-    return (element.innerHTML = output);
+  var output = "<h2>The winner is <strong>";
+  output += obj.winner + "</strong> with: ";
+  output += obj.category + "!</h2>";
+  return (element.innerHTML = output);
 }
