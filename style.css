@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  padding-left: 20px;
+  padding: 0 20px;
   color: white;
   background: rgba(0, 0, 0, 0.9);
   text-align: center;
@@ -141,6 +141,6 @@ strong {
     margin: 0 12.5vw;
   }
   header {
-    padding-left: 12.5%;
+    padding: 0 12.5%;
   }
 }
