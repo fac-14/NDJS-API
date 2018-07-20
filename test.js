@@ -1140,12 +1140,12 @@ var loserObj = {
 
 test("Tests compare function", function(t) {
   t.equal(
-    typeof logic.compare(obj1, obj2),
+    typeof logic.findWinner(obj1, obj2),
     "object",
     "should return an array or object"
   );
   t.equal(
-    logic.compare(obj1, loserObj).winner,
+    logic.findWinner(obj1, loserObj).winner,
     "virtualDOMinic",
     "loser should never win"
   );

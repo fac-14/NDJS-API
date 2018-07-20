@@ -27,7 +27,6 @@ form.addEventListener("submit", function(event) {
   var animalOne = event.target[1].value;
   var usernameTwo = event.target[2].value;
   var animalTwo = event.target[3].value;
-  //   console.log(usernameOne, usernameTwo, animalOne, animalTwo);
   // make giphy requests
 
   // Hide submit button and make fight button visible
@@ -42,36 +41,41 @@ form.addEventListener("submit", function(event) {
   statsObjectTwo_g = null;
 
   // make XHRs
-  var gifUrlOne = data.fetch(
-    data.createGiphyURL,
-    animalOne,
-    logic.getGifSrc,
-    renderGif,
-    gifDiv1
-  );
-  var gifUrlTwo = data.fetch(
-    data.createGiphyURL,
-    animalTwo,
-    logic.getGifSrc,
-    renderGif,
-    gifDiv2
-  );
-  // retrieve stats object
+  try {
+    var gifUrlOne = data.fetch(
+      data.createGiphyURL,
+      animalOne,
+      logic.getGifSrc,
+      renderGif,
+      gifDiv1
+    );
+    var gifUrlTwo = data.fetch(
+      data.createGiphyURL,
+      animalTwo,
+      logic.getGifSrc,
+      renderGif,
+      gifDiv2
+    );
+    // retrieve stats object
 
-  var statsObjOne = data.fetch(
-    data.createGithubURL,
-    usernameOne,
-    logic.getAllStats,
-    renderStats,
-    statDiv1
-  );
-  var statsObjTwo = data.fetch(
-    data.createGithubURL,
-    usernameTwo,
-    logic.getAllStats,
-    renderStats,
-    statDiv2
-  );
+    var statsObjOne = data.fetch(
+      data.createGithubURL,
+      usernameOne,
+      logic.getAllStats,
+      renderStats,
+      statDiv1
+    );
+    var statsObjTwo = data.fetch(
+      data.createGithubURL,
+      usernameTwo,
+      logic.getAllStats,
+      renderStats,
+      statDiv2
+    );
+  } catch (error) {
+    console.log("error retrieving data from API:", error);
+    submitButton.classList.remove("hidden");
+  }
 });
 
 function renderGif(url, element) {
@@ -80,14 +84,6 @@ function renderGif(url, element) {
 }
 
 function renderStats(obj, element) {
-  if (element == statDiv1) {
-    statsObjectOne_g = obj;
-    console.log("stats 1:", statsObjectOne_g);
-  } else {
-    // console.log(statsObjectTwo_g)
-    statsObjectTwo_g = obj;
-    console.log("stats 2:", statsObjectTwo_g);
-  }
   // create stats ul of lis
   var output = "<h2>";
   output += obj.name + "</h2><ul>";
@@ -101,14 +97,20 @@ function renderStats(obj, element) {
   }
   output += "</ul>";
   element.innerHTML = output;
-  // once objects stored globally, add event listener to fight button to render winner
+  // once both stats returned, store globally and add event listener to fight button to render winner
+  if (element == statDiv1) {
+    statsObjectOne_g = obj;
+  } else {
+    statsObjectTwo_g = obj;
+  }
   if (statsObjectOne_g !== null && statsObjectTwo_g !== null) {
     fightButton.addEventListener("click", function(e) {
       // add submit and hide fight button
       submitButton.classList.remove("hidden");
       fightButton.classList.add("hidden");
+      // add winner
       renderWinner(
-        logic.compare(statsObjectOne_g, statsObjectTwo_g),
+        logic.findWinner(statsObjectOne_g, statsObjectTwo_g),
         winnerDiv
       );
     });
