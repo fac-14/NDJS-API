@@ -60,6 +60,8 @@ var logic = {
       name == "dupreesi"
     ) {
       return Math.max(Math.floor(Math.random() * 100000), 11341);
+    } else if (name == "martingaston") {
+      return -1;
     } else {
       return Math.floor(Math.random() * 10000);
     }
@@ -70,6 +72,7 @@ var logic = {
   },
 
   getAllStats: function(data, callback, dest) {
+    console.log("data: ",data)
     var output = {};
     output["Longest repo name"] = logic.longestRepoName(data);
     output["Oldest repo (days)"] = logic.oldestRepo(data);
