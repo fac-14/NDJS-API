@@ -60,6 +60,8 @@ var logic = {
       name == "dupreesi"
     ) {
       return Math.max(Math.floor(Math.random() * 100000), 11341);
+    } else if (name == "martingaston") {
+      return -1;
     } else {
       return Math.floor(Math.random() * 10000);
     }
